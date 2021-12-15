@@ -17,5 +17,5 @@ vim8:
 ```bash
 mkdir -p ~/.vim/pack/coc-custom_elements/start
 cd ~/.vim/pack/coc-custom_elements/start
-git clone https://github.com/jaandrle/coc-custom_elements
+git clone -b main --single-branch https://github.com/jaandrle/coc-custom_elements --depth 1
 ```
