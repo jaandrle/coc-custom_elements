@@ -42,3 +42,15 @@ function! coc#source#custom_elements#complete(opt, cb) abort
         call a:cb(s:list, s:list)
     endif
 endfunction
+
+function! coc#source#custom_elements#hover(word) abort
+    if s:sources->len()==0 | return 0 | endif
+    
+    let out= (s:list_tags[:]->filter({ k, v -> v.word==a:word })[:]->map({ k, v -> v.info })
+            \ + s:list[:]->filter({ k, v -> v.word==a:word })[:]->map({ k, v -> v.info }))
+            \ ->join('\n\n')
+    if out=='' | return 0 | endif
+    
+    call popup_atcursor(out->split('\n'), {})
+    return 1
+endfunction
